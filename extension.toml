@@ -7,7 +7,7 @@ description = "Latte templating language support for Zed"
 repository = "https://github.com/josbeir/zed-latte"
 
 [grammars.latte]
-repository = "file:///home/josbeir/Sites/tree-sitter-latte"
+repository = "https://github.com/josbeir/tree-sitter-latte"
 commit = "1f896246891f2d776ece669fd5049fc89587a9fe"
 
 # [grammars.php_only]
