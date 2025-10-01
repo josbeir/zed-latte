@@ -1,37 +1,57 @@
-; Comments
+; Latte syntax highlighting queries
+; Extends tree-sitter-html highlights
+
+; Inherit HTML highlighting
+(tag_name) @tag
+(erroneous_end_tag_name) @tag.error
+(doctype) @constant
+(attribute_name) @attribute
+(attribute_value) @string
+(entity) @constant.character.escape
+
+; HTML punctuation
+[
+  "<"
+  ">"
+  "</"
+  "/>"
+] @punctuation.bracket
+
+; Latte comments
 (comment) @comment
 
-; Latte blocks
-(block_start) @tag
-(block_end) @tag
+; Latte block constructs
+(block_start) @keyword
+(block_end) @keyword
+(elseif_start) @keyword
+(else_start) @keyword
 
-; Macro calls
-(macro_call
-  (macro_name) @function)
-
+; Latte macros
 (macro) @keyword
+(macro_name) @function.call
+(macro_args) @parameter
 
-; Elseif and else blocks
-(block_start) @tag
-(block_end) @tag
-(elseif_start) @tag
-(else_start) @tag
+; Latte variables and print tags
+(latte_variable
+  (variable_name) @variable)
 
-; Attributes
-(attribute
-  (attribute_name) @attribute)
+; Latte filters
+(filter
+  (filter_name) @function.method)
+(filter
+  (filter_args) @parameter)
 
-(quoted_attribute_value) @string
+; Latte expressions in attributes
+(latte_expression) @variable
 
-; HTML elements
-(tag_name) @tag
-(erroneous_end_tag) @tag.error
-
-; Doctype
-(doctype) @keyword
+; Latte delimiters
+[
+  "{"
+  "}"
+  "{="
+  "{$"
+  "|"
+] @punctuation.delimiter
 
 ; Text content
-(text) @text
-
-; Entities
-(entity) @constant.character.escape
+(text) @none

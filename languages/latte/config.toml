@@ -13,3 +13,5 @@ brackets = [
 wrap_characters = { start_prefix = "<", start_suffix = ">", end_prefix = "</", end_suffix = ">" }
 word_characters = ["-"]
 prettier_parser_name = "latte"
+scope_opt_in_language_servers = ["tailwindcss-language-server"]
+completion_query_characters = ["{", "$"]

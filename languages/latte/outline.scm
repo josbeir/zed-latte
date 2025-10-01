@@ -3,6 +3,10 @@
   (block_start) @context
   (#set! "kind" "block"))
 
+; Show macro definitions in outline
+(macro) @context
+  (#set! "kind" "function")
+
 ; Show macro calls in outline
 (macro_call
   (macro_name) @name
