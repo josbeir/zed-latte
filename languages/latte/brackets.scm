@@ -14,35 +14,15 @@
   open: (if_start) @open
   close: (if_end) @close)
 
-; Latte foreach blocks
-(foreach_block
-  open: (foreach_start) @open
-  close: (foreach_end) @close)
-
-; Latte for blocks
-(for_block
-  open: (for_start) @open
-  close: (for_end) @close)
-
-; Latte while blocks
-(while_block
-  open: (while_start) @open
-  close: (while_end) @close)
+; Latte loop blocks (foreach/for)
+(loop_block
+  open: (loop_start) @open
+  close: (loop_end) @close)
 
 ; Latte switch blocks
 (switch_block
   open: (switch_start) @open
   close: (switch_end) @close)
-
-; Latte macro blocks
-(macro
-  open: (macro_start) @open
-  close: (macro_end) @close)
-
-; Latte capture tag
-(capture_tag
-  "{capture" @open
-  "{/capture}" @close)
 
 ; General bracket pairs for expressions
 ("{" @open "}" @close)

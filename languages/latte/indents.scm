@@ -12,13 +12,9 @@
 
 ; Indent Latte control blocks
 (if_block) @indent
-(foreach_block) @indent
-(for_block) @indent
-(while_block) @indent
+(loop_block) @indent
 (switch_block) @indent
-(macro) @indent
 (capture_tag) @indent
-(embed_tag) @indent
 
 ; Dedent else and elseif - these reset indentation within their parent blocks
 (else_block) @outdent

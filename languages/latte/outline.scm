@@ -1,30 +1,24 @@
-; Show Latte named blocks in outline
-(block) @item
+; Show Latte named blocks in outline with the block tag as context
+(block
+  open: (block_start) @context) @item
   (#set! "kind" "block")
 
-; Show macro definitions in outline
-(macro) @item
-  (#set! "kind" "function")
-
-; Show macro calls in outline
+; Show macro calls in outline with the macro name
 (macro_call
   (macro_name) @name) @item
   (#set! "kind" "function")
 
-; Show control blocks in outline
-(if_block) @item
+; Show control blocks in outline with their opening tags as context
+(if_block
+  open: (if_start) @context) @item
   (#set! "kind" "block")
 
-(foreach_block) @item
+(loop_block
+  open: (loop_start) @context) @item
   (#set! "kind" "block")
 
-(for_block) @item
-  (#set! "kind" "block")
-
-(while_block) @item
-  (#set! "kind" "block")
-
-(switch_block) @item
+(switch_block
+  open: (switch_start) @context) @item
   (#set! "kind" "block")
 
 ; Show HTML elements in outline
