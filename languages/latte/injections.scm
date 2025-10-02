@@ -1,13 +1,14 @@
-; html
-(script_element
-  (raw_text) @injection.content
-  (#set! injection.language "javascript"))
+; inherits: html
 
-(style_element
-  (raw_text) @injection.content
-  (#set! injection.language "css"))
+; Latte injection queries
+; Extends HTML injection with Latte-specific contexts
 
-(attribute
-    (attribute_name) @_attribute_name (#match? @_attribute_name "^style$")
-    (quoted_attribute_value (attribute_value) @injection.content)
-    (#set! injection.language "css"))
+; Inject PHP into latte_expression nodes in attributes
+((latte_expression) @injection.content
+ (#set! injection.language "php_only")
+ (#set! injection.include-children))
+
+; Inject PHP into expressions
+((expression) @injection.content
+ (#set! injection.language "php_only")
+ (#set! injection.include-children))

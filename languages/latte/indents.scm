@@ -21,3 +21,11 @@
 (elseif_block) @outdent
 (case_block) @outdent
 (default_case_block) @outdent
+
+; html
+(start_tag ">" @end) @indent
+(self_closing_tag "/>" @end) @indent
+
+(element
+  (start_tag) @start
+  (end_tag)? @end) @indent

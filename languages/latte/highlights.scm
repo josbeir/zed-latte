@@ -1,7 +1,6 @@
-; Latte syntax highlighting queries
-; Extends tree-sitter-html highlights
+; inherits: html
 
-; Inherit HTML highlighting
+; HTML highlighting
 (tag_name) @tag
 (erroneous_end_tag_name) @tag.error
 (doctype) @constant
@@ -20,11 +19,16 @@
 ; Latte comments
 (comment) @comment
 
-; Latte control blocks
+; Latte blocks - these are token nodes, so we can't drill into their contents
+; but we can highlight the entire node with a specific scope
 (if_block) @keyword.control
 (loop_block) @keyword.control
 (switch_block) @keyword.control
 (block) @keyword.control
+
+; Note: Variables inside {if $var}, {foreach $items}, {switch $status} etc.
+; are consumed as tokens and cannot be individually highlighted without
+; restructuring the grammar to parse their contents (which would impact performance)
 
 ; Latte print tags - highlight differently from variables
 (latte_print_tag) @tag.builtin
@@ -45,16 +49,11 @@
 (latte_file_tag) @keyword.directive
 (embed_tag) @keyword.directive
 (latte_single_tag) @keyword.directive
-(latte_expression_tag) @tag.builtin
 
-; Macro calls
-(macro_call) @keyword.directive
+; Macro calls - {CustomTag args}
 (macro_call
-  macro_name: (macro_name) @function.macro
-  macro_args: (macro_args)? @parameter)
-
-; Type identifiers in varType and templateType
-(type_identifier) @type
+  name: (macro_name) @function.macro
+  arguments: (macro_arguments)? @parameter)
 
 ; Latte filters - highlight the pipe and filter name
 (filter_chain

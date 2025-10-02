@@ -24,6 +24,11 @@
   open: (switch_start) @open
   close: (switch_end) @close)
 
+; Latte capture tag
+(capture_tag
+  "{capture" @open
+  "{/capture}" @close)
+
 ; General bracket pairs for expressions
 ("{" @open "}" @close)
 ("(" @open ")" @close)

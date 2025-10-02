@@ -3,9 +3,8 @@
   open: (block_start) @context) @item
   (#set! "kind" "block")
 
-; Show macro calls in outline with the macro name
-(macro_call
-  (macro_name) @name) @item
+; Show macro calls in outline
+(macro_call) @item
   (#set! "kind" "function")
 
 ; Show control blocks in outline with their opening tags as context
