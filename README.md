@@ -3,6 +3,7 @@
 Latte language support for the Zed code editor.
 
 - Syntax highlighting, brackets, outline, and indentation for `.latte` files.
+- Emmet language server support
 - Powered by [tree-sitter-latte](https://github.com/josbeir/tree-sitter-latte).
 
 ## Installation
@@ -19,7 +20,7 @@ ln -s $(pwd) ~/.config/zed/extensions/latte
 
 ## Contributing
 
-Pull requests and issues are welcome!  
+Pull requests and issues are welcome!
 Please update the `languages/latte/*.scm` files if the grammar changes.
 
 ## License

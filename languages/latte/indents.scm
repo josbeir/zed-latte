@@ -1,31 +1,20 @@
-; Indent after opening tags
-(start_tag) @indent.begin
+; HTML elements
+(element) @indent
 
-; Dedent closing tags
-(end_tag) @indent.end
+; Latte blocks
+(block) @indent
+(if_block) @indent
+(loop_block) @indent
+(switch_block) @indent
+(capture_tag) @indent
 
-; Dedent self-closing tags
-(self_closing_tag) @outdent
+; Dedent structural blocks
+(else_block) @indent
+(elseif_block) @indent
+(case_block) @indent
+(default_case_block) @indent
 
-; Indent Latte named blocks
-(block) @start
-
-; Indent Latte control blocks
-(if_block) @start
-(loop_block) @start
-(switch_block) @start
-(capture_tag) @start
-
-; Dedent else and elseif - these reset indentation within their parent blocks
-(else_block) @outdent
-(elseif_block) @outdent
-(case_block) @outdent
-(default_case_block) @outdent
-
-; html
-(start_tag ">" @end) @indent
-(self_closing_tag "/>" @end) @indent
-
-(element
-  (start_tag) @start
-  (end_tag)? @end) @indent
+; Bracket pairs
+(_ "{" "}" @end) @indent
+(_ "(" ")" @end) @indent
+(_ "[" "]" @end) @indent

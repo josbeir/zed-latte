@@ -8,7 +8,7 @@ repository = "https://github.com/josbeir/zed-latte"
 
 [grammars.latte]
 repository = "https://github.com/josbeir/tree-sitter-latte"
-commit = "6156647bf20c7af4d5823702fa4d67d05fb5de62"
+commit = "390596876f1ddee259737a666ce1d6151c703bcb"
 
 [grammars.php_only]
 repository = "https://github.com/tree-sitter/tree-sitter-php"
@@ -17,8 +17,4 @@ path = "php_only"
 
 [language_servers.emmet]
 name = "Emmet Language Server"
-language = "Latte"
-
-[language_servers.vscode-html-language-server]
-name = "HTML Language Server"
 language = "Latte"

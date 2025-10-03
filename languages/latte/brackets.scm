@@ -14,7 +14,7 @@
   open: (if_start) @open
   close: (if_end) @close)
 
-; Latte loop blocks (foreach/for)
+; Latte loop blocks (foreach/for/while)
 (loop_block
   open: (loop_start) @open
   close: (loop_end) @close)
