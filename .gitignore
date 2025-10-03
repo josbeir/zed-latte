@@ -1,4 +1,6 @@
 grammars/*
+target/*
 CLAUDE.md
 .zed
 *.latte
+test.*

@@ -15,4 +15,7 @@ brackets = [
 wrap_characters = { start_prefix = "<", start_suffix = ">", end_prefix = "</", end_suffix = ">" }
 word_characters = ["-"]
 scope_opt_in_language_servers = ["tailwindcss-language-server"]
-completion_query_characters = ["-", "{", "$"]
+
+[overrides.string]
+completion_query_characters = ["-"]
+opt_into_language_servers = ["tailwindcss-language-server"]
