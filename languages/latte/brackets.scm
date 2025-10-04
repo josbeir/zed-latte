@@ -24,6 +24,11 @@
   open: (directive_start) @open
   close: (directive_end) @close)
 
+; Latte switch blocks
+(embed_tag
+  open: (directive_start) @open
+  close: (directive_end) @close)
+
 ; Latte capture tag
 (capture_tag
   "{capture" @open
