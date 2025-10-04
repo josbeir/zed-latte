@@ -1,24 +1,51 @@
 ; inherits: html
 
 ; PHP content - unified injection for all PHP expressions
-; This covers:
-; - {$variable->property}
-; - {= expression}
-; - {var $x = value}
-; - {if condition}, {foreach items}, {switch expr}, etc.
-; - {macro arguments}
-; - {include 'file', arguments}
-; - {embed 'file', arguments}
-; - Filter arguments: |filter:args
 ((php_only) @injection.content
  (#set! injection.include-children)
  (#set! injection.language "php_only"))
 
+; Html injections
+(script_element
+  (raw_text) @injection.content
+  (#set! injection.language "javascript"))
+
+(style_element
+  (raw_text) @injection.content
+  (#set! injection.language "css"))
+
 ; N-attributes - Latte attributes in HTML tags (n:if, n:foreach, etc.)
-; Inject PHP into the attribute values of any attribute starting with "n:"
 (attribute
   (attribute_name) @_attr
   (#match? @_attr "^n:")
   (quoted_attribute_value
     (attribute_value) @injection.content)
   (#set! injection.language "php_only"))
+
+; AlpineJS attributes
+; <div x-data="{ foo: 'bar' }" x-init="baz()">
+(attribute
+  (attribute_name) @_attr
+    (#match? @_attr "^x-[a-z]+")
+    (#not-any-of? @_attr "x-teleport" "x-ref" "x-transition")
+  (quoted_attribute_value
+    (attribute_value) @injection.content)
+  (#set! injection.language "javascript"))
+
+; <div :foo="bar" @click="baz()">
+(attribute
+  (attribute_name) @_attr
+    (#match? @_attr "^[:@][a-z]+")
+  (quoted_attribute_value
+    (attribute_value) @injection.content)
+  (#set! injection.language "javascript"))
+
+(attribute
+    (attribute_name) @_attribute_name (#match? @_attribute_name "^style$")
+    (quoted_attribute_value (attribute_value) @injection.content)
+    (#set! injection.language "css"))
+
+(attribute
+    (attribute_name) @_attribute_name (#match? @_attribute_name "^on[a-z]+$")
+    (quoted_attribute_value (attribute_value) @injection.content)
+    (#set! injection.language "javascript"))

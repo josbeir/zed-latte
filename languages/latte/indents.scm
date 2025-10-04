@@ -1,21 +1,26 @@
 ; HTML elements
-(element) @indent
+(start_tag ">" @end) @indent
+(self_closing_tag "/>" @end) @indent
+
+(element
+  (start_tag) @start
+  (end_tag)? @end) @indent
 
 ; Latte blocks
-(block) @indent
-(if_block) @indent
-(loop_block) @indent
-(switch_block) @indent
-(capture_tag) @indent
+[
+  (block)
+  (if_block)
+  (loop_block)
+  (switch_block)
+  (capture_tag)
+  (else_block)
+  (elseif_block)
+  (case_block)
+  (default_case_block)
+] @indent
 
 ; Dedent closing tags
 (directive_end) @outdent
-
-; Dedent structural blocks
-(else_block) @indent
-(elseif_block) @indent
-(case_block) @indent
-(default_case_block) @indent
 
 ; Bracket pairs
 (_ "{" "}" @end) @indent

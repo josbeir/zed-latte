@@ -65,6 +65,9 @@
   name: (macro_name) @function.macro
   arguments: (php_only)? @parameter)
 
+; PHP block {php ...}
+(php_block) @function
+
 ; Latte filters - highlight the pipe and filter name
 (filter_chain
   (filter
