@@ -8,6 +8,12 @@
 (switch_block) @indent
 (capture_tag) @indent
 
+; Dedent closing tags
+(block_end) @outdent
+(if_end) @outdent
+(loop_end) @outdent
+(switch_end) @outdent
+
 ; Dedent structural blocks
 (else_block) @indent
 (elseif_block) @indent

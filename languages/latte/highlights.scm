@@ -39,6 +39,9 @@
   "$" @punctuation.special
   name: (identifier) @variable.builtin)
 
+; PHP content - highlighted via injection
+(php_only) @embedded
+
 ; Latte special tags
 (latte_assignment_tag) @keyword.directive
 (var_type_tag) @keyword.type
