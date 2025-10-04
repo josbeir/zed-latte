@@ -1,7 +1,6 @@
 # Zed Latte Extension
 
 Latte language support for the Zed code editor.
-<rewrite_this>
 
 - Syntax highlighting, brackets, outline, and indentation for `.latte` files.
 - Arguments and PHP blocks are passed to tree-sitter-php for highlighting.
@@ -24,7 +23,6 @@ ln -s $(pwd) ~/.config/zed/extensions/latte
 ## Contributing
 
 Pull requests and issues are welcome!
-Please update the `languages/latte/*.scm` files if the grammar changes.
 
 ## License
 
