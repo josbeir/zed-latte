@@ -8,7 +8,7 @@ repository = "https://github.com/josbeir/zed-latte"
 
 [grammars.latte]
 repository = "https://github.com/josbeir/tree-sitter-latte"
-commit = "2a43ebe8649cf7cd784e992b5b22d4b2a8eafac6"
+commit = "623cbfe4f87a94b7b26a0071cad7c4664ffbe0ed"
 
 [grammars.php_only]
 repository = "https://github.com/tree-sitter/tree-sitter-php"
