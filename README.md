@@ -1,10 +1,13 @@
 # Zed Latte Extension
 
 Latte language support for the Zed code editor.
+<rewrite_this>
 
 - Syntax highlighting, brackets, outline, and indentation for `.latte` files.
+- Arguments and PHP blocks are passed to tree-sitter-php for highlighting.
 - Emmet language server support
 - Powered by [tree-sitter-latte](https://github.com/josbeir/tree-sitter-latte).
+</rewrite_this>
 
 ## Installation
 
