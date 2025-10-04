@@ -1,23 +1,31 @@
-; Show Latte named blocks in outline with the block tag as context
+; Show Latte named blocks in outline with the block tag as name
 (block
-  open: (block_start) @context) @item
+  (directive_start) @name
+  arguments: (php_only)? @name
+  "}" @name) @item
   (#set! "kind" "block")
 
 ; Show macro calls in outline
 (macro_call) @item
   (#set! "kind" "function")
 
-; Show control blocks in outline with their opening tags as context
+; Show control blocks in outline with their opening tags as name
 (if_block
-  open: (if_start) @context) @item
+  (directive_start) @name
+  condition: (php_only)? @name
+  "}" @name) @item
   (#set! "kind" "block")
 
 (loop_block
-  open: (loop_start) @context) @item
+  (directive_start) @name
+  content: (php_only)? @name
+  "}" @name) @item
   (#set! "kind" "block")
 
 (switch_block
-  open: (switch_start) @context) @item
+  (directive_start) @name
+  expression: (php_only)? @name
+  "}" @name) @item
   (#set! "kind" "block")
 
 ; Show HTML elements in outline
